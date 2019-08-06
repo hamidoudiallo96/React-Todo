@@ -65,7 +65,9 @@ class App extends React.Component {
   }
   deleteTask = () =>{
     this.setState({
-      todos: this.state.todos.filter(item => item.completed === true  )
+      todos: this.state.todos.filter(item =>{
+        return (!item.completed)
+      }  )
     })
   }
   render() {
