@@ -1,11 +1,11 @@
 import React from 'react'
-import TodoForm from './TodoForm';
+import './Todo.css'
 
 export default function Todo(props) {
+    const show = ` ${props.item.completed ? ' completed' : ''}`
     return (
-        <div>
-            <h1>{props.item.task}</h1>
-            
+        <div  onClick = {() =>props.toggleCompleted(props.item.id)}>
+            <h1 className={show}>{props.item.task}</h1>
         </div>
     )
 }

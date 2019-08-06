@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function TodoForm(props) {
     const{inputValue,setInputValue,handleSubmit} = props
     return (
@@ -16,7 +17,7 @@ export default function TodoForm(props) {
                 </label>
 
                 <button onClick = {handleSubmit}>Add Todo </button>
-                <button>Clear Completed</button>
+                <button onClick ={props.toggleCompleted}>Clear Completed</button>
                 
             </form>
         </div>
