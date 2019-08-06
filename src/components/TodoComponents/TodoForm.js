@@ -13,11 +13,13 @@ export default function TodoForm(props) {
                         name = "task"
                         value = {inputValue.task}
                         onChange = {setInputValue}
+                        id = {inputValue.id}
+                        
                     />
                 </label>
 
                 <button onClick = {handleSubmit}>Add Todo </button>
-                <button onClick ={props.toggleCompleted}>Clear Completed</button>
+                <button onClick ={() =>props.deleteTask(props.inputValue.completed)}>Clear Completed</button>
                 
             </form>
         </div>

@@ -7,11 +7,14 @@ import Todo from './Todo'
 
 export default function TodoList(props) {
     console.log(props.todos)
+
     return (
         <div>
             <ul>
                 {props.todos.map(item =>(
+                    
                     <Todo key = {item.id} item = {item} toggleCompleted = {props.toggleCompleted} />
+                    
                 ))}
             </ul>
         </div>

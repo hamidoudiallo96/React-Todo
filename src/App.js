@@ -15,16 +15,6 @@ class App extends React.Component {
     // state Values
     this.state ={
       todos:[
-        {
-          task: 'Organize Garage',
-          id: 1528817077286,
-          completed: false
-        },
-        {
-          task: 'Bake Cookies',
-          id: 1528817084358,
-          completed: false
-        }
       ],
       inputValue:{
         task: "",
@@ -47,8 +37,13 @@ class App extends React.Component {
   }
   handleSubmit = (e) =>{
     e.preventDefault()
+    const newTask = {
+      task: this.state.inputValue.task,
+      id: Date.now(),
+      completed: false
+    };
     this.setState({
-      todos: [...this.state.todos, this.state.inputValue]
+      todos: [...this.state.todos, newTask]
     })
   }
   toggleCompleted (id){
@@ -68,6 +63,11 @@ class App extends React.Component {
     })
     console.log(this.state.todos.completed)
   }
+  deleteTask = () =>{
+    this.setState({
+      todos: this.state.todos.filter(item => item.completed === true  )
+    })
+  }
   render() {
     return (
       <div>
@@ -75,7 +75,7 @@ class App extends React.Component {
 
         {/* rendering Components */}
         <TodoList todos = {this.state.todos} toggleCompleted = {this.toggleCompleted} />
-        <TodoForm inputValue = {this.state.inputValue} setInputValue = {this.setInputValue} handleSubmit = {this.handleSubmit} toggleCompleted = {this.toggleCompleted} />
+        <TodoForm inputValue = {this.state.inputValue} setInputValue = {this.setInputValue} handleSubmit = {this.handleSubmit} deleteTask = {this.deleteTask} />
         
       </div>
     );
